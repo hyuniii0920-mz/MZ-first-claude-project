@@ -1,0 +1,40 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  body {
+    @apply m-0 min-h-screen bg-bg font-sans text-gray-800;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/25 backdrop-blur-[20px] rounded-[18px] border border-white/35;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-primary hover:bg-primary-dark text-white rounded-[12px] font-medium transition-all duration-200 shadow-lg hover:shadow-xl;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-white/40 hover:bg-white/60 backdrop-blur-sm text-primary-dark rounded-[12px] font-medium transition-all duration-200 border border-white/50;
+  }
+
+  .input-glass {
+    @apply w-full px-4 py-3 bg-white/40 backdrop-blur-sm rounded-[12px] border border-white/50 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all;
+  }
+
+  .card-glass {
+    @apply glass p-6 hover:shadow-2xl transition-all duration-300 cursor-pointer;
+  }
+}

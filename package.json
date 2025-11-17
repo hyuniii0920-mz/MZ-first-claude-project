@@ -1,0 +1,9 @@
+{
+  "name": "mz-first-claude-project",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "cd frontend && npm run dev",
+    "install:all": "cd frontend && npm install"
+  }
+}
