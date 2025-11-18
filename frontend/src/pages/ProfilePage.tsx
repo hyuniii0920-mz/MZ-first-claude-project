@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { userApi } from '../services/api';
 import Navbar from '../components/Navbar';
 import Avatar from '../components/Avatar';
 
@@ -53,10 +54,9 @@ export default function ProfilePage() {
     setSuccess('');
 
     try {
-      // TODO: Implement photo upload API
-      // const formData = new FormData();
-      // formData.append('avatar', selectedFile);
-      // await userApi.uploadAvatar(formData);
+      const formData = new FormData();
+      formData.append('avatar', selectedFile);
+      await userApi.uploadAvatar(formData);
 
       setSuccess('프로필 사진이 업로드되었습니다.');
       setSelectedFile(null);
@@ -86,9 +86,7 @@ export default function ProfilePage() {
     }
 
     try {
-      // TODO: Implement username update API
-      // await userApi.updateUsername({ username });
-
+      await userApi.updateUsername({ username });
       setSuccess('이름이 업데이트되었습니다.');
       await refreshUser();
     } catch (err) {
@@ -127,7 +125,7 @@ export default function ProfilePage() {
           <div className="flex flex-col items-center gap-6">
             <div className="relative">
               <Avatar
-                src={avatarPreview || null}
+                src={avatarPreview || user.avatarUrl}
                 name={user.username}
                 size="lg"
               />

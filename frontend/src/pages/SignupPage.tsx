@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import { authApi } from '../services/api';
 
 export default function SignupPage() {
@@ -8,12 +9,14 @@ export default function SignupPage() {
   const [username, setUsername] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       await authApi.signup({ email, password, username });
-      navigate('/login');
+      await login(email, password);
+      navigate('/posts');
     } catch (err) {
       setError('회원가입 실패. 이미 존재하는 이메일일 수 있습니다.');
     }

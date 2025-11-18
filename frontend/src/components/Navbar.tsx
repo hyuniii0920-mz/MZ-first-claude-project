@@ -30,7 +30,7 @@ export default function Navbar() {
                   <button className="btn-primary">글쓰기</button>
                 </Link>
                 <Link to="/profile" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                  <Avatar src={null} name={user.username} size="sm" />
+                  <Avatar src={user.avatarUrl} name={user.username} size="sm" />
                   <span className="text-sm font-medium text-gray-700">{user.username}</span>
                 </Link>
                 <button onClick={handleLogout} className="btn-secondary">

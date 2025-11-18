@@ -28,7 +28,7 @@ public class AuthService {
         user.setUsername(request.getUsername());
 
         User saved = userRepository.save(user);
-        return new UserResponse(saved.getId(), saved.getEmail(), saved.getUsername());
+        return new UserResponse(saved.getId(), saved.getEmail(), saved.getUsername(), saved.getAvatarUrl());
     }
 
     public UserResponse login(LoginRequest request) {
@@ -39,12 +39,12 @@ public class AuthService {
             throw new RuntimeException("Invalid email or password");
         }
 
-        return new UserResponse(user.getId(), user.getEmail(), user.getUsername());
+        return new UserResponse(user.getId(), user.getEmail(), user.getUsername(), user.getAvatarUrl());
     }
 
     public UserResponse getUserById(Long userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
-        return new UserResponse(user.getId(), user.getEmail(), user.getUsername());
+        return new UserResponse(user.getId(), user.getEmail(), user.getUsername(), user.getAvatarUrl());
     }
 }

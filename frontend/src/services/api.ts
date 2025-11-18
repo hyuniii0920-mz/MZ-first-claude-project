@@ -27,3 +27,12 @@ export const commentApi = {
   updateComment: (postId: number, commentId: number, data: CommentRequest) => api.put<Comment>(`/posts/${postId}/comments/${commentId}`, data),
   deleteComment: (postId: number, commentId: number) => api.delete(`/posts/${postId}/comments/${commentId}`),
 };
+
+export const userApi = {
+  updateUsername: (data: { username: string }) => api.put('/users/username', data),
+  uploadAvatar: (formData: FormData) => api.post<{ avatarUrl: string }>('/users/avatar', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  }),
+};

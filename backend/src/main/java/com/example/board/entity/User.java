@@ -19,6 +19,8 @@ public class User {
     @Column(nullable = false)
     private String username;
 
+    private String avatarUrl;
+
     private LocalDateTime createdAt;
 
     @PrePersist
@@ -38,6 +40,9 @@ public class User {
 
     public String getUsername() { return username; }
     public void setUsername(String username) { this.username = username; }
+
+    public String getAvatarUrl() { return avatarUrl; }
+    public void setAvatarUrl(String avatarUrl) { this.avatarUrl = avatarUrl; }
 
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }

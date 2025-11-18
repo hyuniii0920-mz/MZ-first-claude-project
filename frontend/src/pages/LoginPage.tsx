@@ -1,17 +1,18 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { authApi } from '../services/api';
+import { useAuth } from '../context/AuthContext';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await authApi.login({ email, password });
+      await login(email, password);
       navigate('/posts');
     } catch (err) {
       setError('로그인 실패. 이메일과 비밀번호를 확인하세요.');
